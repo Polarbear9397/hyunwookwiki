@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>류현욱의 Playlist - 커스텀 오디오 플레이어</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard&display=swap');
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: linear-gradient(to bottom, #0d0d1a, #1a1a40);
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    #stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(0,0,0,0.8);
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+    header h1 a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+    .menu li {
+      margin: 0;
+    }
+    .menu a {
+      text-decoration: none;
+      color: #f0f0f0;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .menu a:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 80px auto 60px;
+      position: relative;
+      z-index: 1;
+    }
+    h1.page-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    p.description {
+      color: #ddd;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .song-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .song {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+      width: 320px;
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.3s ease;
+      color: #222;
+    }
+    .song:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+    .song iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+    .song-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .song-artist {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 50px;
+      padding: 12px 30px;
+      background-color: #f8b500;
+      color: #222;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(248, 181, 0, 0.5);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+    .back-btn:hover {
+      background-color: #e09700;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(224, 151, 0, 0.7);
+    }
+
+    /* 반응형 */
+    @media (max-width: 700px) {
+      .song-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .song {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <header>
+    <h1><a href="../index.html">현욱위키</a></h1>
+    <ul class="menu">
+      <li><a href="profile.html">류현욱 소개</a></li>
+      <li><a href="powers.html">류현욱의 서재</a></li>
+      <li><a href="quotes.html">명언모음.zip</a></li>
+      <li><a href="music.html">류현욱의 playlist</a></li>
+      <li><a href="relations.html">류현욱의 2D모음.zip</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <h1 class="page-title">류현욱의 Playlist</h1>
+    <p class="description">현욱이가 열심히 선별하여 뽑아준 곡!!</p>
+
+    <div class="song-list">
+      <div class="song">
+        <iframe
+          src="https://www.youtube.com/embed/ajEdqtgjgzg?si=mhaY8nhJyBtktCku"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        <div class="song-title">군청(群青)</div>
+        <div class="song-artist">YOASOBI</div>
+      </div>
+
+      <div class="song">
+        <iframe 
+          src="https://www.youtube.com/embed/hMITeJ4PRRE?si=fXrJq-Se3woRUZYW"
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+        <div class="song-title">좋아하니까(好きだから)</div>
+        <div class="song-artist">유이카</div>
+      </div>
+        
+     <div class="song">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BGlQakaaJDs?si=WKXrWE4kqrWb04kw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="song-title">그 밴드</div>
+        <div class="song-artist">봇치 더 록</div>
+      </div>
+
+      <div class="song">
+        <iframe 
+          src="https://www.youtube.com/embed/QWIMsW4OC_Y?si=8lNPFqP46SkC1rbK" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+        <div class="song-title">반짝 (きらり；후지이 카제)</div>
+        <div class="song-artist">다즈비</div>
+      </div>
+    </div>
+
+    <a href="../index.html" class="back-btn">← 메인으로 돌아가기</a>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5 + 0.5,
+          opacity: Math.random(),
+          speed: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.strokeStyle =
+
