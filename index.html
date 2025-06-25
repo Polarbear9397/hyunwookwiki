@@ -262,9 +262,9 @@
   }
 
   function animateStars() {
-    // 마우스를 천천히 따라가도록 보간
-    targetX += (mouseX - targetX) * 0.03;
-    targetY += (mouseY - targetY) * 0.03;
+    // 마우스 별 딜레이
+    targetX += (mouseX - targetX) * 0.01;
+    targetY += (mouseY - targetY) * 0.01;
 
     const offsetX = (targetX - canvas.width / 2) * 0.07;
     const offsetY = (targetY - canvas.height / 2) * 0.07;
