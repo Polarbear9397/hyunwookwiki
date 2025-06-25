@@ -262,11 +262,12 @@
 
   function animateStars() {
     // 마우스와 별의 딜레이
-    targetX += (mouseX - targetX) * 0.02;
-    targetY += (mouseY - targetY) * 0.02;
+    targetX += (mouseX - targetX) * 0.2;
+    targetY += (mouseY - targetY) * 0.2;
 
-    const offsetX = (targetX - canvas.width / 2) * 0.05;
-    const offsetY = (targetY - canvas.height / 2) * 0.05;
+    const offsetX = (targetX - canvas.width / 2) * 2.5; 
+    const offsetY = (targetY - canvas.height / 2) * 2.5;
+
 
     stars.forEach((star) => {
       star.opacity += (Math.random() - 0.5) * 0.03;
