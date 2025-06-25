@@ -243,9 +243,8 @@
     ctx.lineWidth = 0.5;
 
     stars.forEach((star, i) => {
-      star.x = star.baseX + offsetX * (star.radius / 4);
-      star.y = star.baseY + offsetY * (star.radius / 4);
-
+      star.x = star.baseX + offsetX * 0.5;
+      star.y = star.baseY + offsetY * 0.5;
       ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
       ctx.beginPath();
       ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
@@ -263,11 +262,11 @@
 
   function animateStars() {
     // 마우스를 천천히 따라가도록 보간
-    targetX += (mouseX - targetX) * 0.2;
-    targetY += (mouseY - targetY) * 0.2;
+    targetX += (mouseX - targetX) * 0.4;
+    targetY += (mouseY - targetY) * 0.4;
 
-    const offsetX = (targetX - canvas.width / 2) * 10;
-    const offsetY = (targetY - canvas.height / 2) * 10;
+    const offsetX = (targetX - canvas.width / 2) * 0.05;
+    const offsetY = (targetY - canvas.height / 2) * 0.05;
 
     stars.forEach((star) => {
       star.opacity += (Math.random() - 0.5) * 0.03;
