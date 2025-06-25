@@ -266,8 +266,8 @@
     targetX += (mouseX - targetX) * 0.2;
     targetY += (mouseY - targetY) * 0.2;
 
-    const offsetX = (targetX - canvas.width / 2) * 1;
-    const offsetY = (targetY - canvas.height / 2) * 1;
+    const offsetX = (targetX - canvas.width / 2) * 10;
+    const offsetY = (targetY - canvas.height / 2) * 10;
 
     stars.forEach((star) => {
       star.opacity += (Math.random() - 0.5) * 0.03;
