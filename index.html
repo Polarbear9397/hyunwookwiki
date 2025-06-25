@@ -262,15 +262,15 @@
   }
 
   function animateStars() {
-    // 마우스 별 딜레이
-    targetX += (mouseX - targetX) * 0.01;
-    targetY += (mouseY - targetY) * 0.01;
+    // 마우스를 천천히 따라가도록 보간
+    targetX += (mouseX - targetX) * 0.03;
+    targetY += (mouseY - targetY) * 0.03;
 
-    const offsetX = (targetX - canvas.width / 2) * 0.01;
-    const offsetY = (targetY - canvas.height / 2) * 0.01;
+    const offsetX = (targetX - canvas.width / 2) * 0.07;
+    const offsetY = (targetY - canvas.height / 2) * 0.07;
 
     stars.forEach((star) => {
-      star.opacity += (Math.random() - 0.5) * 0.08;
+      star.opacity += (Math.random() - 0.5) * 0.03;
       star.opacity = Math.min(Math.max(star.opacity, 0.3), 1);
     });
 
@@ -287,7 +287,7 @@
   createStars();
   animateStars();
 
-  // 음소거 토글
+  // 음소거 토글 기능
   const player = document.getElementById('bg-music');
   const btn = document.getElementById('muteToggleBtn');
   let isMuted = true;
@@ -295,7 +295,7 @@
   btn.addEventListener('click', () => {
     if (isMuted) {
       player.src = player.src.replace('mute=1', 'mute=0');
-      btn.textContent = '음소거';
+      btn.textContent = '음소거 하기';
       isMuted = false;
     } else {
       player.src = player.src.replace('mute=0', 'mute=1');
@@ -304,6 +304,7 @@
     }
   });
 </script>
+
 
 
 </body>
