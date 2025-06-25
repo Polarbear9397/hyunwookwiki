@@ -211,19 +211,16 @@
   let targetX = mouseX;
   let targetY = mouseY;
 
-  // 마우스 위치 추적
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
   });
 
-  // 캔버스 사이즈 설정
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
 
-  // 별 생성
   function createStars() {
     stars = [];
     for (let i = 0; i < starCount; i++) {
@@ -238,7 +235,6 @@
     }
   }
 
-  // 별 그리기
   function drawStars(offsetX, offsetY) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
