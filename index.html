@@ -211,7 +211,7 @@
   let targetX = mouseX;
   let targetY = mouseY;
 
-  // 마우스 위치 저장
+  // 마우스 위치 추적
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -238,7 +238,6 @@
 
   function drawStars(offsetX, offsetY) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.beginPath();
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
     ctx.lineWidth = 0.5;
@@ -263,11 +262,11 @@
   }
 
   function animateStars() {
-    // 마우스를 부드럽게 따라가는 효과
-    targetX += (mouseX - targetX) * 0.05;
-    targetY += (mouseY - targetY) * 0.05;
+    // 마우스를 천천히 따라가도록 보간
+    targetX += (mouseX - targetX) * 0.03;
+    targetY += (mouseY - targetY) * 0.03;
 
-    const offsetX = (targetX - canvas.width / 2) * 0.07;  // 더 크게 움직임
+    const offsetX = (targetX - canvas.width / 2) * 0.07;
     const offsetY = (targetY - canvas.height / 2) * 0.07;
 
     stars.forEach((star) => {
@@ -296,7 +295,7 @@
   btn.addEventListener('click', () => {
     if (isMuted) {
       player.src = player.src.replace('mute=1', 'mute=0');
-      btn.textContent = '음소거 하기';
+      btn.textContent = '음소거';
       isMuted = false;
     } else {
       player.src = player.src.replace('mute=0', 'mute=1');
@@ -305,6 +304,7 @@
     }
   });
 </script>
+
 
 </body>
 </html>
